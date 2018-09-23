@@ -16,23 +16,24 @@ const instructions = Platform.select({
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
 
 type Props = {};
-export default class App extends Component<Props> {
+class App extends Component<Props> {
   componentDidMount(){
-    codePush.sync({ mandatoryInstallMode: codePush.InstallMode.ON_NEXT_RESUME });
+    //codePush.sync({ mandatoryInstallMode: codePush.InstallMode.ON_NEXT_RESUME });
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native! wow</Text>
+        <Text style={styles.welcome}>Welcome to React Native! wow A</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
       </View>
     );
   }
 }
-
+export default codePush(codePushOptions)(App);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
